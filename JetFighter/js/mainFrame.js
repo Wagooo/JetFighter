@@ -1,0 +1,2 @@
+	mainCanvas = new PIXI.DisplayObjectContainer;
+	

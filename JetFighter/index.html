@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>JET FIGHTER</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #000000;
+		}
+	</style>
+	<script src="js/pixi.js"></script>
+	
+</head>
+<body>
+	
+</audio>
+	<script>
+		
+	var interactive = true;
+	var stage = new PIXI.Stage(0x000000, interactive);
+	
+	// create a renderer instance.
+	var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
+	
+	// add the renderer view element to the DOM
+	document.body.appendChild(renderer.view);
+	
+	requestAnimFrame( animate );
+	
+	// create a background..
+	var background = PIXI.Sprite.fromImage("images/start.png");
+	
+	// add background to stage..
+	stage.addChild(background);
+	
+
+    
+	// create a new Sprite using the texture
+	var start = new PIXI.Sprite(PIXI.Texture.fromImage("images/stbut1.png"));
+	var exit = new PIXI.Sprite(PIXI.Texture.fromImage("images/exbut1.png"));
+	start.setInteractive(true);
+	start.buttonMode = true;
+	exit.setInteractive(true);
+	exit.buttonMode = true;
+	start.position.x = 550;
+	start.position.y = 350;
+	exit.position.x = 550;
+	exit.position.y = 450;
+	
+	stage.addChild(start);
+	stage.addChild(exit);
+
+		start.mouseover = start.touchstart = function(data){
+
+				start.setTexture(PIXI.Texture.fromImage("images/stbut2.png"));
+			}
+			start.mouseout = start.touchstart = function(data){
+
+				start.setTexture(PIXI.Texture.fromImage("images/stbut1.png"));
+			}
+		start.mousedown = start.touchstart = function(data){
+			
+			this.isdown = true;
+			start = new PIXI.Sprite(PIXI.Texture.fromImage("images/stbut2.png"));
+			window.open("game.html","_self");
+		}
+
+		exit.mouseover = exit.touchstart = function(data){
+
+				exit.setTexture(PIXI.Texture.fromImage("images/exbut2.png"));
+			}
+			exit.mouseout = exit.touchstart = function(data){
+
+				exit.setTexture(PIXI.Texture.fromImage("images/exbut1.png"));
+			}
+		exit.mousedown = exit.touchstart = function(data){
+			
+			this.isdown = true;
+			exit = new PIXI.Sprite(PIXI.Texture.fromImage("images/exbut2.png"));
+			window.close();
+		}
+		
+		// set the mouseup and touchend callback..
+		
+	function animate() {
+	
+	    requestAnimFrame( animate );
+	    renderer.render(stage);
+	}
+	
+	</script>
+
+	</body>
+</html>
